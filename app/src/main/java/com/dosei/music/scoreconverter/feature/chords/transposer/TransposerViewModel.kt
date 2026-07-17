@@ -3,7 +3,6 @@ package com.dosei.music.scoreconverter.feature.chords.transposer
 import androidx.compose.ui.text.AnnotatedString
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.dosei.music.ktransposer.NoteModifier
 import com.dosei.music.ktransposer.TransposeSong
 import com.dosei.music.scoreconverter.toolbox.BeautifySong
 import com.dosei.music.scoreconverter.toolbox.CopyToClipboard
@@ -26,11 +25,7 @@ class TransposerViewModel(
     }
 
     fun onTranspose(song: AnnotatedString, semitones: Int): AnnotatedString {
-        val transposed = transpose(
-            song = song,
-            semitones = semitones,
-            preferredModifier = NoteModifier.AUTO
-        )
+        val transposed = transpose(song = song, semitones = semitones)
         return onBeautify(AnnotatedString(transposed))
     }
 
